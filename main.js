@@ -2,6 +2,9 @@
 const video = document.getElementById("qr-video");
 const fullName = document.getElementById("full-name");
 const phone = document.getElementById("phone");
+const email = document.getElementById("email");
+const vip = document.getElementById("true");
+const takeout = document.getElementById ("eat")
 const startScanButton = document.getElementById("start-scan");
 
 let scanning = false;
@@ -48,6 +51,9 @@ function scanQRCode() {
 
     fullName.textContent = data.full_name;
     phone.textContent = data.phone;
+    email.textContent = data.email;
+    vip.textContent = data.email;
+    takeout.Content = data.eat;
     scanning = false;
     video.srcObject.getTracks().forEach((track) => track.stop());
   }
