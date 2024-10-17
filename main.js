@@ -5,6 +5,7 @@ const phone = document.getElementById("phone");
 const email = document.getElementById("email");
 const vip = document.getElementById("vip");
 const takeout = document.getElementById ("eat")
+const code = document.getElementById ("code")
 const startScanButton = document.getElementById("start-scan");
 
 let scanning = false;
@@ -47,6 +48,7 @@ function scanQRCode() {
   const code = jsQR(imageData.data, canvas.width, canvas.height);
 
   if (code) {
+    code.textContent = code.data;
     const data = JSON.parse(code.data);
 
     fullName.textContent = data.full_name;
