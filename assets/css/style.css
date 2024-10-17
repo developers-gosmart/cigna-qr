@@ -27,6 +27,19 @@ video {
     border-radius: 10px;
 }
 
-p{
+strong {
+    text-transform: uppercase;
+}
+
+p {
     text-align: left;
+    padding-left: 1rem;
+}
+
+.responsive-img {
+    width: 100%;
+    max-width: 356px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
 }

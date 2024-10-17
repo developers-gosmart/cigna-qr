@@ -4,11 +4,26 @@ const fullName = document.getElementById("full-name");
 const phone = document.getElementById("phone");
 const email = document.getElementById("email");
 const vip = document.getElementById("vip");
-const takeout = document.getElementById ("eat")
-const code = document.getElementById ("code")
+const takeout = document.getElementById ("eat");
 const startScanButton = document.getElementById("start-scan");
 
 let scanning = false;
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then((registration) => {
+        console.log("Service Worker registrado con éxito:", registration);
+        getInitToken(registration);
+      })
+      .catch((error) => {
+        console.error("Error al registrar el Service Worker:", error);
+      });
+  });
+} else {
+  console.log("Service Worker no soportado");
+}
 
 // Al hacer clic en el botón, iniciamos el escaneo QR
 startScanButton.addEventListener("click", () => {
@@ -48,7 +63,6 @@ function scanQRCode() {
   const code = jsQR(imageData.data, canvas.width, canvas.height);
 
   if (code) {
-    code.textContent = code.data;
     const data = JSON.parse(code.data);
 
     fullName.textContent = data.full_name;
